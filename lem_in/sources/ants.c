@@ -3,49 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ants.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <vbrazhni@student.unit.ua>        +#+  +:+       +#+        */
+/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/30 18:08:50 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/09/30 18:08:50 by vbrazhni         ###   ########.fr       */
+/*   Created: 2020/02/08 15:38:58 by umoff             #+#    #+#             */
+/*   Updated: 2020/02/18 13:34:31 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include "error_message.h"
 
-static t_ant	*create_ant(t_lem_in *lem_in, int index)
+/*
+** Функция создания муравьев (нумерация муравьев)
+*/
+
+void	create_ants(t_data *data)
 {
-	t_ant	*ant;
+	int i;
 
-	if (!(ant = (t_ant *)ft_memalloc(sizeof(t_ant))))
-		terminate(ERR_ANT_INIT);
-	ant->index = index;
-	ant->start = lem_in->start;
-	ant->end = NULL;
-	ant->next = NULL;
-	return (ant);
-}
-
-static void		add_ant(t_lem_in *lem_in, t_ant *ant)
-{
-	t_ant	*current;
-
-	current = lem_in->ants;
-	if (current)
+	data->ants = (t_ant *)malloc(sizeof(t_ant) * data->ant_qty);
+	i = 0;
+	while (i < data->ant_qty)
 	{
-		while (current->next)
-			current = current->next;
-		current->next = ant;
+		data->ants[i].name = i + 1;
+		i++;
 	}
-	else
-		lem_in->ants = ant;
 }
 
-void			init_ants(t_lem_in *lem_in)
-{
-	int		i;
+/*
+** Функция получения кратчайшего пути
+*/
 
-	i = lem_in->ants_start;
-	while (i > 0)
-		add_ant(lem_in, create_ant(lem_in, i--));
+t_list	*get_shortest_path(t_data *data)
+{
+	t_list	*temp;
+	t_list	*short_path;
+
+	temp = data->pathways;
+	short_path = data->pathways;
+	while (temp)
+	{
+		if (short_path->content_size > temp->content_size)
+			short_path = temp;
+		temp = temp->next;
+	}
+	short_path->content_size++;
+	return ((t_list *)short_path->content);
+}
+
+/*
+** Функция назначения пути
+*/
+
+void	appoint_path(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < data->ant_qty)
+	{
+		data->ants[i].path = get_shortest_path(data);
+		i++;
+	}
 }

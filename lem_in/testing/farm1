@@ -1,0 +1,26 @@
+20
+##start
+A 0 0
+B 5 20
+C 5 -20
+D 10 30
+E 10 10
+F 10 -10
+G 10 -30
+H 15 20
+I 15 -20
+##end
+J 20 0
+A-B
+A-C
+B-D
+B-E
+C-F
+C-G
+D-H
+E-H
+F-I
+G-I
+H-J
+I-J
+
