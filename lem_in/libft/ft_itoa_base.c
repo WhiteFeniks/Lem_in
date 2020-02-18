@@ -1,52 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_abs.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 14:59:25 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/08 14:59:27 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/08 14:59:48 by umoff             #+#    #+#             */
+/*   Updated: 2020/02/08 14:59:50 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_get_len(long long n)
+static size_t	ft_get_len(intmax_t n, char base)
 {
 	size_t len;
 
 	len = 0;
-	if (n == 0)
-		len = 1;
+	if (n <= 0)
+		len++;
 	while (n)
 	{
 		len++;
-		n = n / 10;
+		n = n / base;
 	}
 	return (len);
 }
 
-char			*ft_itoa_abs(long long n)
+char			*ft_itoa_base(intmax_t n, char base, int char_case)
 {
-	long long	num;
+	intmax_t	num;
 	char		temp;
 	size_t		len;
 	char		*str;
 
 	num = n;
-	len = ft_get_len(n);
+	len = ft_get_len(n, base);
 	str = ft_strnew(len);
 	if (n == 0)
 		str[0] = '0';
 	len--;
 	while (num)
 	{
-		temp = num % 10;
-		temp = FT_ABS(temp);
-		str[len] = temp + '0';
-		num /= 10;
+		temp = num % base < 0 ? -(num % base) : num % base;
+		if (temp <= 9)
+			str[len] = temp + '0';
+		else
+			str[len] = temp - 10 + (char_case == 1 ? 'A' : 'a');
+		num /= base;
 		len--;
 	}
+	if (n < 0)
+		str[len] = '-';
 	return (str);
 }

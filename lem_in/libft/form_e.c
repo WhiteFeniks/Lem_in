@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:57:16 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/08 14:57:19 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/18 20:07:50 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int		normalize_number(t_fq *fq)
 {
-	int power;
+	int				power;
+	long double		n;
 
 	power = 0;
 	if (fq->n > 1 || fq->n <= 0)
 	{
-		while ((FT_ABS((intmax_t)fq->fn)) > 9)
+		n = fq->fn < 0 ? -(fq->fn) : fq->fn;
+		while ((intmax_t)n > 9)
 		{
-			fq->fn /= 10;
+			n /= 10;
 			power++;
 		}
 	}

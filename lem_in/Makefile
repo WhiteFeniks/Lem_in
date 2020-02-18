@@ -6,23 +6,20 @@
 #    By: umoff <umoff@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/08 15:38:52 by umoff             #+#    #+#              #
-#    Updated: 2020/02/08 15:38:54 by umoff            ###   ########.fr        #
+#    Updated: 2020/02/18 20:12:42 by klaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 
-# Compiler
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror -g
 
-# Directories
 SRC_DIR := ./sources
 OBJ_DIR := ./objects
 INC_DIR := ./includes ./libft/includes
 LFT_DIR := ./libft
 
-# Source files
 SRC :=	lem_in.c			\
 		flag_parser.c 		\
 		reader.c			\
@@ -39,14 +36,10 @@ SRC :=	lem_in.c			\
 		helpers.c			\
 		helpers_delete.c 	
 		
-		
-# Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-#includes
 INC := $(addprefix -I, $(INC_DIR))
 
-# Libs
 LFT := libft.a
 
 .PHONY = all clean fclean re
@@ -71,6 +64,3 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-
-

@@ -12,20 +12,11 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
 # include "get_next_line.h"
 # include "ft_printf.h"
-# include "ft_btree.h"
-
-# define FT_ABS(x) x < 0 ? -x : x
-
-/*
-** Содержимое, размер содержимого
-*/
 
 typedef struct		s_list
 {
@@ -52,7 +43,6 @@ void				ft_lstdel_back(t_list **alst);
 void				ft_lstdel_front(t_list **alst);
 size_t				ft_lstlen(t_list *alst);
 t_list				*ft_lst_erase(t_list *head);
-
 void				*ft_memset(void *destination, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -62,7 +52,6 @@ void				*ft_memchr(void const *s, int c, size_t n);
 int					ft_memcmp(void const *s1, void const *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
-
 size_t				ft_strlen(char const *str);
 char				*ft_strdup(char const *s1);
 char				*ft_strcpy(char *dst, const char *src);
@@ -92,11 +81,9 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char	const *s, char c);
 size_t				ft_word_count(char const *s, char c);
 void				ft_strrev(char *str);
-
 void				ft_clear_strarr(char ***str_arr);
 size_t				ft_len_strarr(char **arr);
 void				ft_put_strarr(char **arr);
-
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -105,7 +92,6 @@ int					ft_isprint(int c);
 int					ft_iswhite(char c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-
 intmax_t			ft_atoi(char const *str);
 long long int		ft_atoi16(char const *str);
 char				*ft_itoa(long long n);
@@ -118,7 +104,6 @@ char				*ft_ftoa(long double n, int precision);
 char				*ft_ftoa_abs(long double n, int precision);
 size_t				ft_numlen(intmax_t n);
 int					ft_is_number(char *str);
-
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);

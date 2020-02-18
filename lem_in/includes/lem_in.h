@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:54:56 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/18 14:45:23 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/18 20:15:31 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ typedef	struct	s_flags
 	short		h;
 }				t_flags;
 
-/*
-** Описание статусов
-** c - common room
-** s - start room
-** e - end room
-*/
-
 typedef struct	s_room
 {
 	char		*name;
@@ -49,10 +42,6 @@ typedef struct	s_room
 	int			visited;
 	int			wave;
 }				t_room;
-
-/*
-** Имя муравья и путь 
-*/
 
 typedef struct	s_ant
 {

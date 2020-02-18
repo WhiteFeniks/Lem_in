@@ -12,7 +12,6 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
 # include <stdarg.h>
 # include <wchar.h>
 # include <locale.h>
@@ -21,10 +20,8 @@
 # include <time.h>
 # include "libft.h"
 # include "ft_style_sheet.h"
-
 # define TYPES 	"sScC%idDxXoOuUbpn&krfFeE"
 # define FV		"-+ #0'"
-
 # define MINUS 0
 # define PLUS  1
 # define SPACE 2
@@ -62,12 +59,10 @@ typedef struct	s_format_qualifier
 }				t_fq;
 
 int				ft_printf(const char *format, ...);
-
 void			parse_qualifier(const char *qual, t_fq *fq, va_list ap);
 int				check_width(char **q_str, t_fq *fq, va_list ap);
 int				check_precision(char **q_str, t_fq *fq, va_list ap);
 int				check_size(char **q_str, t_fq *fq);
-
 int				form_output(va_list ap, t_fq *fq);
 char			*fill_left(char *s, size_t width, size_t *len, char c);
 char			*fill_right(char *s, size_t width, size_t *len, char c);
@@ -79,15 +74,12 @@ void			form_elips(t_fq *fq);
 void			form_i_d(t_fq *fq, va_list ap);
 void			form_xoubp(t_fq *fq, va_list ap);
 void			form_p(t_fq *fq, va_list ap);
-
 int				print_date(t_fq *fq);
 void			form_r(t_fq *fq, va_list ap);
 void			form_f(t_fq *fq, va_list ap);
 void			form_e(t_fq *fq, va_list ap);
-
 char			*encode_symbol(int val);
 void			form_issue_out(t_fq *fq, char c);
-
 void			add_sign(t_fq *fq);
 void			compute_precision(t_fq *fq);
 void			compute_precision_unsigned(t_fq *fq);
@@ -97,15 +89,5 @@ void			add_prefix(t_fq *fq);
 void			compute_space(t_fq *fq);
 void			compute_width_float(t_fq *fq);
 void			add_sign_float(t_fq *fq);
-
-/*
-**	%k print current date and time in defferent formats
-**	hh 				: hh:mm:ss
-**	h				: hh:mm
-**	l				: YYYY-MM-DD
-**	ll				: YYYY-MM
-**	z				: YYYY
-**	no size of j	: YYYY-MM-DD hh:mm:ss
-*/
 
 #endif

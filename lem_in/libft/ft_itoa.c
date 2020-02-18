@@ -43,7 +43,7 @@ char			*ft_itoa(long long n)
 	while (num)
 	{
 		temp = num % 10;
-		temp = FT_ABS(temp);
+		temp = temp < 0 ? -temp : temp;
 		str[len] = temp + '0';
 		num /= 10;
 		len--;

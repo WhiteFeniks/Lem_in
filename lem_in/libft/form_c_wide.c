@@ -16,7 +16,7 @@ static short	count_active_bits(intmax_t n)
 {
 	short k;
 
-	n = FT_ABS(n);
+	n = n < 0 ? -n : n;
 	k = 0;
 	while (n >> k)
 		k++;

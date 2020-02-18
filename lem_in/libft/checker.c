@@ -23,7 +23,7 @@ int			check_width(char **q_str, t_fq *fq, va_list ap)
 		t = va_arg(ap, int);
 		if (t < 0)
 			fq->flags[MINUS] = '1';
-		fq->width = FT_ABS(t);
+		fq->width = t < 0 ? -t : t;
 		(*q_str)++;
 		return (1);
 	}

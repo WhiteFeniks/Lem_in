@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree_inorder_print.c                           :+:      :+:    :+:   */
+/*   ft_lst_erase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 14:55:28 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/08 14:55:31 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/08 15:00:17 by umoff             #+#    #+#             */
+/*   Updated: 2020/02/15 14:22:21 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_btree.h"
+#include "libft.h"
 
-void	ft_btree_inorder_print(t_btree *root, void (*p)(void *))
+t_list	*ft_lst_erase(t_list *head)
 {
-	if (!root)
-		return ;
-	ft_btree_inorder_print(root->left, p);
-	p(root->content);
-	ft_btree_inorder_print(root->right, p);
+	t_list *temp;
+
+	if (!head)
+		return (NULL);
+	while (head)
+	{
+		temp = head;
+		head = head->next;
+		if (temp->content)
+		{
+			free(temp->content);
+			temp->content = NULL;
+		}
+		temp->content_size = 0;
+		free(temp);
+	}
+	return (NULL);
 }

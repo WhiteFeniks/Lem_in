@@ -12,12 +12,6 @@
 
 #include "ft_printf.h"
 
-/*
-** Goes through the format string, looking for the % symbol
-** If % was found - parse qualifier by filling stuct fq;
-** Then next ap will be written on stdout;
-*/
-
 static void	init_struct(t_fq *fq)
 {
 	ft_memset(fq->flags, '0', 6);

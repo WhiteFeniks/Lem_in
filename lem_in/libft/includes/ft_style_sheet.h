@@ -12,13 +12,10 @@
 
 #ifndef FT_STYLE_SHEET_H
 # define FT_STYLE_SHEET_H
-
 # define RESET      "\x1b[0m"
-
 # define BOLD       "\x1b[1m"
 # define UNDERLINE  "\x1b[4m"
 # define INVERT     "\x1b[7m"
-
 # define BLACK      "\x1b[30m"
 # define RED        "\x1b[31m"
 # define GREEN      "\x1b[32m"
@@ -28,7 +25,6 @@
 # define CYAN       "\x1b[36m"
 # define WHITE      "\x1b[37m"
 # define F_RESET    "\x1b[39m"
-
 # define B_BLACK    "\x1b[40m"
 # define B_RED      "\x1b[41m"
 # define B_GREEN    "\x1b[42m"

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ftoa_abs.c                                      :+:      :+:    :+:   */
+/*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 14:59:07 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/08 14:59:10 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/08 14:59:14 by umoff             #+#    #+#             */
+/*   Updated: 2020/02/08 14:59:16 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	char	*fstr;
 	char	*res;
 
-	istr = ft_itoa_abs(ipart);
+	istr = ft_itoa(ipart);
 	if (precision == 0)
 		return (istr);
 	if (fpart == 0)
@@ -67,7 +67,7 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	return (res);
 }
 
-char	*ft_ftoa_abs(long double n, int precision)
+char	*ft_ftoa(long double n, int precision)
 {
 	intmax_t		ipart;
 	long double		fpart;
@@ -81,14 +81,10 @@ char	*ft_ftoa_abs(long double n, int precision)
 		n = ((intmax_t)(n * pow - 0.5)) / (pow * 1.0);
 	ipart = (intmax_t)n;
 	fpart = n - (long double)ipart;
-	fpart = FT_ABS(fpart);
+	fpart = fpart < 0 ? -fpart : fpart;
+	fpart = ((intmax_t)(fpart * pow + 0.5)) / (pow * 1.0);
 	if (precision != 0)
-	{
-		if (fpart == 0)
-			fpart = 0.0000000000001;
 		fpart = fpart * pow;
-		fpart = ((intmax_t)(fpart + 0.5)) / 1.0;
-	}
 	res = form_result(ipart, fpart, precision);
 	return (res);
 }
