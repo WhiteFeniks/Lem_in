@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:54:56 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 20:46:18 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/18 14:45:23 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef	struct	s_flags
 }				t_flags;
 
 /*
-** Status description:
+** Описание статусов
 ** c - common room
 ** s - start room
 ** e - end room
