@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 19:06:24 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:01:05 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,16 @@ void	print_help(void)
 	ft_printf("-s - supress output of file data\n");
 	ft_printf("-h - show help\n");
 	exit(1);
+}
+
+/*
+** Проверка на существование линии и печать ошибки
+*/
+
+void	check_line(t_data *data, char *line)
+{
+	if (line)
+		data->flags.s == 1 ? 0 : ft_printf("%s\n", line);
+	else
+		data->flags.e ? error(line, "empty line") : error(NULL, NULL);
 }

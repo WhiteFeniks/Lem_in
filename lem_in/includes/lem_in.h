@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:54:56 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/19 14:00:35 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 16:59:10 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 # define FD 0
 # define EMPTY -1
-//# define ERROR_MSG(line, s) data->flags.e ? error(line,s) : error(NULL, NULL)
-//# define PRINT_LINE(line) data->flags.s == 1 ? 0 : ft_printf("%s\n", line)
 
 typedef	struct	s_flags
 {
@@ -77,6 +75,7 @@ void			delete_room_arr(t_data *data);
 void			delete_path(void *content, size_t content_size);
 void			delete_pathways(t_list **head);
 void			clear_data(t_data *data);
+void			check_line(t_data *data, char *line);
 
 /*
 ** Функции для чтения данных
@@ -90,6 +89,7 @@ int				is_link(char *line);
 void			parse_room(t_data *data, char *line, char status);
 void			parse_link(t_data *data, char *line);
 void			exec_instr(t_data *data, char *line);
+void			exec_instr_2(t_data *data, char *line);
 void			check_status(t_data *data);
 void			write_ants_qty(t_data *data, char *line);
 void			check_file(t_data *data, char *line, int i);

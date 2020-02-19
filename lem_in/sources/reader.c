@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 18:22:18 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:40:19 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	read_ant_qty(t_data *data, char **line)
 	while (get_next_line(FD, line) > 0)
 	{
 		if (!(*line))
-            data->flags.e ? error(*line, "empty line") : error(NULL, NULL);
-        data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
+			data->flags.e ? error(*line, "empty line") : error(NULL, NULL);
+		data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
 		if (is_comment(*line))
 		{
 			ft_strdel(line);
@@ -33,10 +33,10 @@ static void	read_ant_qty(t_data *data, char **line)
 			write_ants_qty(data, *line);
 			return ;
 		}
-        data->flags.e ? error(*line, "incorrect ants quantity value") :
-        error(NULL, NULL);
+		data->flags.e ? error(*line, "incorrect ants quantity value") :
+			error(NULL, NULL);
 	}
-    data->flags.e ? error(*line, "empty file") : error(NULL, NULL);
+	data->flags.e ? error(*line, "empty file") : error(NULL, NULL);
 }
 
 /*
@@ -48,8 +48,8 @@ static void	read_rooms(t_data *data, char **line)
 	while (get_next_line(FD, line) > 0)
 	{
 		if (!(*line))
-            data->flags.e ? error(*line, "empty line") : error(NULL, NULL);
-        data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
+			data->flags.e ? error(*line, "empty line") : error(NULL, NULL);
+		data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
 		if (is_comment(*line))
 		{
 			ft_strdel(line);
@@ -62,8 +62,8 @@ static void	read_rooms(t_data *data, char **line)
 		else if (is_link(*line))
 			return ;
 		else
-            data->flags.e ? error(*line, "incorrect room parameters") :
-            error(NULL, NULL);
+			data->flags.e ? error(*line, "incorrect room parameters") :
+				error(NULL, NULL);
 	}
 }
 
@@ -82,7 +82,7 @@ static void	build_adj_matrix(t_data *data, char **line)
 	{
 		if (!(*line) && ft_printf("Warning: empty line\n"))
 			return ;
-        data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
+		data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
 		if (is_comment(*line))
 		{
 			ft_strdel(line);
@@ -134,11 +134,11 @@ void		read_data(t_data *data)
 	read_ant_qty(data, &line);
 	read_rooms(data, &line);
 	if (!ft_lstlen(data->rooms))
-        data->flags.e ? error(NULL, "rooms weren`t specified") :
-        error(NULL, NULL);
+		data->flags.e ? error(NULL, "rooms weren`t specified") :
+			error(NULL, NULL);
 	if (!line)
-        data->flags.e ? error(line, "there are no links between rooms") :
-        error(NULL, NULL);
+		data->flags.e ? error(line, "there are no links between rooms") :
+			error(NULL, NULL);
 	check_status(data);
 	build_adj_matrix(data, &line);
 	ft_printf("\n");

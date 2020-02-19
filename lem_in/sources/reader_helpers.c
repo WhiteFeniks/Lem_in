@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:45:11 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:38:11 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,23 @@ void	write_ants_qty(t_data *data, char *line)
 {
 	data->ant_qty = ft_atoi(line);
 	if (data->ant_qty <= 0)
-		ERROR_MSG(line, "non-positive value");
+		data->flags.e ? error(line, "non-positive value") : error(NULL, NULL);
 	if (data->ant_qty > 100000)
-		ERROR_MSG(line, "Too much ants. [limit 100 000]");
+		data->flags.e ? error(line, "Too much ants. [limit 100 000]") :
+			error(NULL, NULL);
 	ft_strdel(&line);
 }
 
 /*
-** Ппроверка файла, если нет муравьев и файл пустой
+** Проверка файла, если нет муравьев и файл пустой
 */
 
 void	check_file(t_data *data, char *line, int i)
 {
 	if (i && !data->ant_qty)
-		ERROR_MSG(line, "no ants quantity");
+		data->flags.e ? error(line, "no ants quantity") : error(NULL, NULL);
 	if (!i)
-		ERROR_MSG(line, "file is empty");
+		data->flags.e ? error(line, "file is empty") : error(NULL, NULL);
 }
 
 /*
@@ -51,11 +52,14 @@ void	check_uniqe_room(t_data *data, t_room room, char *line)
 	while (temp)
 	{
 		if (ft_strequ(room.name, ((t_room *)temp->content)->name))
-			ERROR_MSG(line, "the room with such name is already exists");
+			data->flags.e ? error(line,
+					"the room with such name is already exists") :
+				error(NULL, NULL);
 		if (room.x == (((t_room *)temp->content)->x) &&
 			room.y == (((t_room *)temp->content)->y))
-			ERROR_MSG(line,
-						"the room with the same coordinates is already exists");
+			data->flags.e ? error(line,
+					"the room with the same coordinates is already exists") :
+				error(NULL, NULL);
 		temp = temp->next;
 	}
 }
