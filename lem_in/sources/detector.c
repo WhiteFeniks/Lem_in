@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 15:39:03 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 19:23:14 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		get_next_vertex(t_data data, int index)
 	while (j < data.room_num)
 	{
 		if (data.adj.values[index][j] &&
-			!data.room_arr[j].visited &&
+			!data.room_arr[j].visit &&
 			data.room_arr[j].wave < steps)
 		{
 			steps = data.room_arr[j].wave;
@@ -49,7 +49,7 @@ void	find_path_to_start(t_data *data, t_list **path, int index)
 
 	if (data->room_arr[index].status == 's')
 		return ;
-	data->room_arr[index].visited = 1;
+	data->room_arr[index].visit = 1;
 	vertex = get_next_vertex(*data, index);
 	if (vertex == EMPTY)
 	{
@@ -129,5 +129,5 @@ void	detect_pathways(t_data *data)
 	}
 	if (!ft_lstlen(data->pathways))
 		ERROR_MSG(NULL, "there are no possible ways");
-	unset_visited(data);
+	unset_visit(data);
 }

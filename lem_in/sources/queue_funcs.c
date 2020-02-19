@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 15:39:37 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 20:39:21 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	add_to_queue(t_list **queue, t_data *data, int index)
 	j = 0;
 	while (j < data->room_num)
 	{
-		if (data->adj.values[index][j] == 1 && !data->room_arr[j].visited &&
+		if (data->adj.values[index][j] == 1 && !data->room_arr[j].visit &&
 			!in_queue(*queue, j))
 		{
 			if (!*queue)

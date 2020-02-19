@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 15:39:52 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/18 13:46:15 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 13:50:34 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	parse_room(t_data *data, char *line, char status)
 	check_uniqe_room(data, room, line);
 	room.status = status;
 	room.index = index;
-	room.visited = 0;
+	room.visit = 0;
 	room.wave = -1;
 	index++;
 	if (!data->rooms)

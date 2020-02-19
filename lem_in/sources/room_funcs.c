@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 15:43:29 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 20:54:26 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int		get_index_by_status(t_room *room_arr, int room_num, char status)
 ** Функция установки посящения
 */
 
-void	set_visited(t_list *rooms, int index)
+void	set_visit(t_list *rooms, int index)
 {
 	while (rooms)
 	{
 		if (((t_room *)rooms->content)->index == index)
-			((t_room *)rooms->content)->visited = 1;
+			((t_room *)rooms->content)->visit = 1;
 		rooms = rooms->next;
 	}
 }

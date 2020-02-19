@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 15:43:34 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 20:51:39 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 13:44:43 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 /*
 ** Функция передвижения муравьев L1-2 L1-3 и т.д.
+** *((int *)data->ants[i].path->content) -> комната в пути
+** *((int *)data->ants[i].path->next->content) -> следующая комната в пути
 */
 
 int		make_step(t_data *data)
@@ -26,15 +28,17 @@ int		make_step(t_data *data)
 	while (i < data->ant_qty)
 	{
 		if (data->ants[i].path->next &&
-			(!data->room_arr[NEXT_ROOM_IN_PATH(i)].visited ||
-			data->room_arr[NEXT_ROOM_IN_PATH(i)].status == 'e'))
+			(!data->room_arr[*((int *)data->ants[i].path->next->content)].visit
+			||
+			data->room_arr[*((int *)data->ants[i].path->next->content)].status
+			== 'e'))
 		{
-			data->room_arr[ROOM_IN_PATH(i)].visited = 0;
+			data->room_arr[*((int *)data->ants[i].path->content)].visit = 0;
 			data->ants[i].path = data->ants[i].path->next;
-			data->room_arr[ROOM_IN_PATH(i)].visited = 1;
+			data->room_arr[*((int *)data->ants[i].path->content)].visit = 1;
 			moved++;
 			ft_printf("L%i-%s ", data->ants[i].name,
-			data->room_arr[ROOM_IN_PATH(i)].name);
+			data->room_arr[*((int *)data->ants[i].path->content)].name);
 		}
 		i++;
 	}

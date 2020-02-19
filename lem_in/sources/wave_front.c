@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 15:43:39 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 19:24:09 by umoff            ###   ########.fr       */
+/*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	handle_start_vertex(t_data *data, t_list **queue)
 
 	index = get_index_by_status(data->room_arr, data->room_num, 's');
 	data->room_arr[index].wave = 0;
-	data->room_arr[index].visited = 1;
+	data->room_arr[index].visit = 1;
 	add_to_queue(queue, data, index);
 	mark_wave(*data, *queue, 1);
 }
@@ -45,14 +45,14 @@ void	handle_start_vertex(t_data *data, t_list **queue)
 ** Функция обнуления посящений
 */
 
-void	unset_visited(t_data *data)
+void	unset_visit(t_data *data)
 {
 	int i;
 
 	i = 0;
 	while (i < data->room_num)
 	{
-		data->room_arr[i].visited = 0;
+		data->room_arr[i].visit = 0;
 		i++;
 	}
 }
@@ -75,13 +75,13 @@ void	wave_front(t_data *data)
 		index = *((int *)queue->content);
 		if (data->room_arr[index].wave > wave)
 			wave++;
-		if (!data->room_arr[index].visited)
+		if (!data->room_arr[index].visit)
 		{
 			add_to_queue(&queue, data, index);
 			mark_wave(*data, queue, wave + 1);
-			data->room_arr[index].visited = 1;
+			data->room_arr[index].visit = 1;
 			ft_lstdel_front(&queue);
 		}
 	}
-	unset_visited(data);
+	unset_visit(data);
 }

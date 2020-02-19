@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:54:56 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/18 20:15:31 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/19 14:00:35 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include "matrix.h"
 # include <inttypes.h>
 
+/*
+** inttypes для intmax_t
+*/
+
 # define FD 0
 # define EMPTY -1
-# define ROOM_IN_PATH(i) *((int *)data->ants[i].path->content)
-# define NEXT_ROOM_IN_PATH(i) *((int *)data->ants[i].path->next->content)
 # define ERROR_MSG(line, s) data->flags.e ? error(line,s) : error(NULL, NULL)
 # define PRINT_LINE(line) data->flags.s == 1 ? 0 : ft_printf("%s\n", line)
 
@@ -39,7 +41,7 @@ typedef struct	s_room
 	int			y;
 	char		status;
 	int			index;
-	int			visited;
+	int			visit;
 	int			wave;
 }				t_room;
 
@@ -100,7 +102,7 @@ void			wave_front(t_data *data);
 int				in_queue(t_list *queue, int index);
 void			add_to_queue(t_list **queue, t_data *data, int index);
 void			detect_pathways(t_data *data);
-void			unset_visited(t_data *data);
+void			unset_visit(t_data *data);
 
 /*
 ** Функции комнаты
