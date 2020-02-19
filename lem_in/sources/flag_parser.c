@@ -51,16 +51,16 @@ static void	detect_flag(char *arg, t_flags *flags)
 ** Парсер флагов
 */
 
-t_flags		parse_flags(char ***args, int argc)
+t_flags		parse_flags(char ***argv, int argc)
 {
 	t_flags	flags;
 
 	init_flags(&flags);
 	while (argc)
 	{
-		if (**args && ***args == '-' && !ft_is_number(**args))
-			detect_flag(**args, &flags);
-		(*args)++;
+		if (**argv && ***argv == '-' && !ft_is_number(**argv))
+			detect_flag(**argv, &flags);
+		(*argv)++;
 		argc--;
 	}
 	return (flags);
