@@ -13,7 +13,7 @@
 #include "lem_in.h"
 
 /*
-** Функция очистки данных
+** Очистка данных
 */
 
 void		clear_data(t_data *data)
@@ -26,7 +26,7 @@ void		clear_data(t_data *data)
 }
 
 /*
-** Функция обнуления количества муравьев, комнат, массивов комнат, путей
+** Обнуление количества муравьев, комнат, массивов комнат, путей
 */
 
 static void	init_data(t_data *data)
@@ -38,7 +38,7 @@ static void	init_data(t_data *data)
 }
 
 /*
-** Главная функция
+** Main
 */
 
 int			main(int argc, char **argv)

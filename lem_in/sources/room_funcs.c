@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:43:29 by umoff             #+#    #+#             */
+/*   Created: 2020/02/12 12:31:29 by umoff             #+#    #+#             */
 /*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,7 +13,7 @@
 #include "lem_in.h"
 
 /*
-** Функция получиения индекса по имени
+** Получение индекса по имени
 */
 
 int		get_index_by_name(t_list *rooms, char *name)
@@ -28,7 +28,7 @@ int		get_index_by_name(t_list *rooms, char *name)
 }
 
 /*
-** Функция получения индекса по статусу
+** Получение индекса по статусу
 */
 
 int		get_index_by_status(t_room *room_arr, int room_num, char status)
@@ -46,7 +46,7 @@ int		get_index_by_status(t_room *room_arr, int room_num, char status)
 }
 
 /*
-** Функция установки посящения
+** Установка посещения
 */
 
 void	set_visit(t_list *rooms, int index)

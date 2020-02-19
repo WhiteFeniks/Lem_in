@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
+/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:39:28 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/18 13:37:34 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/15 16:02:40 by klaurine          #+#    #+#             */
+/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Функция создания матрицы (двумерный массив)
+** Создание матрицы (двумерный массив)
 */
 
 t_matrix	create_matrix(size_t rows, size_t cols)
@@ -42,7 +42,7 @@ t_matrix	create_matrix(size_t rows, size_t cols)
 }
 
 /*
-** Функция очищения матрицы (двумерный массив)
+** Очищение матрицы (двумерный массив)
 */
 
 void		free_matrix(t_matrix m)
@@ -61,7 +61,7 @@ void		free_matrix(t_matrix m)
 }
 
 /*
-** Функция, которая дублирует матрицу
+** Дублирование матрицы
 */
 
 t_matrix	dup_matrix(t_matrix src)
@@ -88,7 +88,7 @@ t_matrix	dup_matrix(t_matrix src)
 }
 
 /*
-** Функция печати матрицы
+** Печать матрицы
 */
 
 void		print_matrix(t_matrix m)

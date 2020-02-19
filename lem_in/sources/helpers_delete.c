@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   helpers_delete.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
+/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:39:13 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/15 14:15:26 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/13 14:50:06 by klaurine          #+#    #+#             */
+/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Функция удалении комнаты
+** Удаление комнаты
 */
 
 void	delete_room(void *room, size_t content_size)
@@ -26,7 +26,7 @@ void	delete_room(void *room, size_t content_size)
 }
 
 /*
-** Функция удаляния пути
+** Удаление пути
 */
 
 void	delete_path(void *content, size_t content_size)
@@ -38,7 +38,7 @@ void	delete_path(void *content, size_t content_size)
 }
 
 /*
-** Функция удаления пути
+** Удаление путей
 */
 
 void	delete_pathways(t_list **head)
@@ -59,7 +59,7 @@ void	delete_pathways(t_list **head)
 }
 
 /*
-** Функция удаления массива комнат
+** Удаление массива комнат
 */
 
 void	delete_room_arr(t_data *data)

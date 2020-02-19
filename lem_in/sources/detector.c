@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:39:03 by umoff             #+#    #+#             */
+/*   Created: 2020/02/10 14:11:33 by umoff             #+#    #+#             */
 /*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,7 +13,7 @@
 #include "lem_in.h"
 
 /*
-** Функция получения следующих вершин и подсчета шагов
+** Получение следующих вершин и подсчета шагов
 */
 
 int		get_next_vertex(t_data data, int index)
@@ -40,7 +40,7 @@ int		get_next_vertex(t_data data, int index)
 }
 
 /*
-** Функция нахождения пути (списка)
+** Нахождение пути (списка)
 */
 
 void	find_path_to_start(t_data *data, t_list **path, int index)
@@ -61,7 +61,7 @@ void	find_path_to_start(t_data *data, t_list **path, int index)
 }
 
 /*
-** Функция получения количества путей
+** Получение количества путей
 */
 
 int		get_qty_ways(t_data data, int index)
@@ -81,7 +81,7 @@ int		get_qty_ways(t_data data, int index)
 }
 
 /*
-** Функция добавления путя к другим путям
+** Добавление пути к другим путям
 */
 
 void	add_to_pathways(t_data *data, t_list *path)
@@ -104,7 +104,7 @@ void	add_to_pathways(t_data *data, t_list *path)
 }
 
 /*
-** Функция нахождения путей
+** Нахождение путей
 */
 
 void	detect_pathways(t_data *data)
@@ -116,7 +116,9 @@ void	detect_pathways(t_data *data)
 	index = get_index_by_status(data->room_arr, data->room_num, 'e');
 	possible_ways = get_qty_ways(*data, index);
 	if (!possible_ways)
-		ERROR_MSG(NULL, "the END room isn`n connected with any other room");
+        data->flags.e ?
+        error(NULL, "the END room isn`n connected with any other room") :
+        error(NULL, NULL);
 	while (possible_ways)
 	{
 		path = ft_lstnew(&index, sizeof(index));
@@ -128,6 +130,7 @@ void	detect_pathways(t_data *data)
 			add_to_pathways(data, path);
 	}
 	if (!ft_lstlen(data->pathways))
-		ERROR_MSG(NULL, "there are no possible ways");
+        data->flags.e ? error(NULL, "there are no possible ways") :
+        error(NULL, NULL);
 	unset_visit(data);
 }

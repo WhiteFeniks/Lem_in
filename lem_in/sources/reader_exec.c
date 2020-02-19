@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   reader_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
+/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:39:52 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/19 13:50:34 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/15 20:27:59 by klaurine          #+#    #+#             */
+/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Функция записи инструкций start и end (комнатам назначается статус s и e)
+** Запись инструкций start и end (комнатам назначается статус s и e)
 */
-
+//# define ERROR_MSG(line, s) data->flags.e ? error(line,s) : error(NULL, NULL)
+//# define PRINT_LINE(line) data->flags.s == 1 ? 0 : ft_printf("%s\n", line)
 void	exec_instr(t_data *data, char *line)
 {
 	if (ft_strequ(line, "##start"))
@@ -27,7 +28,8 @@ void	exec_instr(t_data *data, char *line)
 		if (is_room(line))
 			parse_room(data, line, 's');
 		else
-			ERROR_MSG(line, "incorrect room parameters");
+            data->flags.e ? error(line, "incorrect room parameters") :
+            error(NULL, NULL);
 	}
 	else if (ft_strequ(line, "##end"))
 	{
@@ -38,14 +40,16 @@ void	exec_instr(t_data *data, char *line)
 		if (is_room(line))
 			parse_room(data, line, 'e');
 		else
-			ERROR_MSG(line, "incorrect room parameters");
+            data->flags.e ? error("incorrect room parameters") :
+            error(NULL, NULL);
 	}
 	else
-		ERROR_MSG(line, "incorrect instruction");
+        data->flags.e ? error(line, "incorrect instruction") :
+        error(NULL, NULL);
 }
 
 /*
-** Функция которая парсит комнаты
+** Парсер комнаты
 */
 
 void	parse_room(t_data *data, char *line, char status)
@@ -73,8 +77,7 @@ void	parse_room(t_data *data, char *line, char status)
 }
 
 /*
-** Функция которая парсит связи между комнатами и добавляет данные в матрицу
-** смежности
+** Парсер связи между комнатами и добавление данных в матрицу смежности
 */
 
 void	parse_link(t_data *data, char *line)
@@ -89,12 +92,13 @@ void	parse_link(t_data *data, char *line)
 	if (ft_strequ(arr[0], arr[1]))
 	{
 		ft_clear_strarr(&arr);
-		ERROR_MSG(line, "self connected room");
-	}
+        data->flags.e ? error(line, "self connected room") : error(NULL, NULL);
+}
 	if (i == -1 || j == -1)
 	{
 		ft_clear_strarr(&arr);
-		ERROR_MSG(line, "there is no room with such name");
+        data->flags.e ? error(line, "there is no room with such name") :
+        error(NULL, NULL);
 	}
 	data->adj.values[i][j] = 1;
 	data->adj.values[j][i] = 1;
@@ -103,7 +107,7 @@ void	parse_link(t_data *data, char *line)
 }
 
 /*
-** Функция проверки валидность статуса (start и end)
+** Проверка на валидность статуса (start и end)
 */
 
 void	check_status(t_data *data)
@@ -123,12 +127,14 @@ void	check_status(t_data *data)
 			end++;
 		rooms = rooms->next;
 	}
-	if (start == 0)
-		ERROR_MSG(NULL, "START room wasn`t specified");
-	if (end == 0)
-		ERROR_MSG(NULL, "END room wasn`t specified");
-	if (start > 1)
-		ERROR_MSG(NULL, "there are more than one START room");
-	if (end > 1)
-		ERROR_MSG(NULL, "there are more than one END room");
+	if (start == 0 && data->flags.e)
+        error(NULL, "START room wasn`t specified");
+	if (end == 0 && data->flags.e)
+        error(NULL, "END room wasn`t specified");
+	if (start > 1 && data->flags.e)
+        error(NULL, "there are more than one START room");
+	if (end > 1 && data->flags.e)
+       error(NULL, "there are more than one END room");
+	if ((start == 0 || end == 0 || start > 1 || end > 1) && !(data->flags.e))
+	    error(NULL, NULL);
 }

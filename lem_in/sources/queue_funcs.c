@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:39:37 by umoff             #+#    #+#             */
+/*   Created: 2020/02/11 13:21:57 by umoff             #+#    #+#             */
 /*   Updated: 2020/02/19 13:44:10 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -13,7 +13,7 @@
 #include "lem_in.h"
 
 /*
-** Функция добавления в очередь
+** Проверка на очередь
 */
 
 int		in_queue(t_list *queue, int index)
@@ -28,7 +28,7 @@ int		in_queue(t_list *queue, int index)
 }
 
 /*
-** Функция добавления в очередь
+** Добавление в очередь
 */
 
 void	add_to_queue(t_list **queue, t_data *data, int index)

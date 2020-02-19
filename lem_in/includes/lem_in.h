@@ -23,8 +23,8 @@
 
 # define FD 0
 # define EMPTY -1
-# define ERROR_MSG(line, s) data->flags.e ? error(line,s) : error(NULL, NULL)
-# define PRINT_LINE(line) data->flags.s == 1 ? 0 : ft_printf("%s\n", line)
+//# define ERROR_MSG(line, s) data->flags.e ? error(line,s) : error(NULL, NULL)
+//# define PRINT_LINE(line) data->flags.s == 1 ? 0 : ft_printf("%s\n", line)
 
 typedef	struct	s_flags
 {

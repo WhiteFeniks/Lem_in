@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
+/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 15:43:22 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/17 18:23:22 by umoff            ###   ########.fr       */
+/*   Created: 2020/02/09 18:22:18 by klaurine          #+#    #+#             */
+/*   Updated: 2020/02/19 18:45:50 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Функция считывания количества муравьей
+** Cчитывание количества муравьев
 */
 
 static void	read_ant_qty(t_data *data, char **line)
@@ -21,8 +21,8 @@ static void	read_ant_qty(t_data *data, char **line)
 	while (get_next_line(FD, line) > 0)
 	{
 		if (!(*line))
-			ERROR_MSG(*line, "empty line");
-		PRINT_LINE(*line);
+            data->flags.e ? error(*line, "empty line") : error(NULL, NULL);
+        data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
 		if (is_comment(*line))
 		{
 			ft_strdel(line);
@@ -33,13 +33,14 @@ static void	read_ant_qty(t_data *data, char **line)
 			write_ants_qty(data, *line);
 			return ;
 		}
-		ERROR_MSG(*line, "incorrect ants quantity value");
+        data->flags.e ? error(*line, "incorrect ants quantity value") :
+        error(NULL, NULL);
 	}
-	ERROR_MSG(*line, "empty file");
+    data->flags.e ? error(*line, "empty file") : error(NULL, NULL);
 }
 
 /*
-** Функция считывания комнат
+** Считывание комнат
 */
 
 static void	read_rooms(t_data *data, char **line)
@@ -47,8 +48,8 @@ static void	read_rooms(t_data *data, char **line)
 	while (get_next_line(FD, line) > 0)
 	{
 		if (!(*line))
-			ERROR_MSG(*line, "empty line");
-		PRINT_LINE(*line);
+            data->flags.e ? error(*line, "empty line") : error(NULL, NULL);
+        data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
 		if (is_comment(*line))
 		{
 			ft_strdel(line);
@@ -61,12 +62,13 @@ static void	read_rooms(t_data *data, char **line)
 		else if (is_link(*line))
 			return ;
 		else
-			ERROR_MSG(*line, "incorrect room parameters");
+            data->flags.e ? error(*line, "incorrect room parameters") :
+            error(NULL, NULL);
 	}
 }
 
 /*
-** Функция построения матрицы смежности
+** Построение матрицы смежности
 */
 
 static void	build_adj_matrix(t_data *data, char **line)
@@ -80,7 +82,7 @@ static void	build_adj_matrix(t_data *data, char **line)
 	{
 		if (!(*line) && ft_printf("Warning: empty line\n"))
 			return ;
-		PRINT_LINE(*line);
+        data->flags.s == 1 ? 0 : ft_printf("%s\n", *line);
 		if (is_comment(*line))
 		{
 			ft_strdel(line);
@@ -97,7 +99,7 @@ static void	build_adj_matrix(t_data *data, char **line)
 }
 
 /*
-** Функция записи комнат в массив
+** Запись комнат в массив
 */
 
 static void	write_rooms_to_arr(t_data *data)
@@ -121,7 +123,7 @@ static void	write_rooms_to_arr(t_data *data)
 }
 
 /*
-** Функция считывания данных
+** Считывание данных
 */
 
 void		read_data(t_data *data)
@@ -132,9 +134,11 @@ void		read_data(t_data *data)
 	read_ant_qty(data, &line);
 	read_rooms(data, &line);
 	if (!ft_lstlen(data->rooms))
-		ERROR_MSG(NULL, "rooms weren`t specified");
+        data->flags.e ? error(NULL, "rooms weren`t specified") :
+        error(NULL, NULL);
 	if (!line)
-		ERROR_MSG(line, "there are no links between rooms");
+        data->flags.e ? error(line, "there are no links between rooms") :
+        error(NULL, NULL);
 	check_status(data);
 	build_adj_matrix(data, &line);
 	ft_printf("\n");
