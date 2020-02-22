@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader_checks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 13:20:42 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 16:32:44 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:30:42 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,6 @@ int	is_room(char *line)
 	}
 	ft_clear_strarr(&arr);
 	return (1);
-}
-
-/*
-** Проверка на то, что в списке есть такое же имя
-*/
-
-int	in_list_by_name(t_list *rooms, char *name)
-{
-	while (rooms)
-	{
-		if (ft_strequ(((t_room *)rooms->content)->name, name))
-			return (1);
-		rooms = rooms->next;
-	}
-	return (0);
 }
 
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader_helpers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:45:11 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 17:38:11 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:29:54 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ void	write_ants_qty(t_data *data, char *line)
 		data->flags.e ? error(line, "Too much ants. [limit 100 000]") :
 			error(NULL, NULL);
 	ft_strdel(&line);
-}
-
-/*
-** Проверка файла, если нет муравьев и файл пустой
-*/
-
-void	check_file(t_data *data, char *line, int i)
-{
-	if (i && !data->ant_qty)
-		data->flags.e ? error(line, "no ants quantity") : error(NULL, NULL);
-	if (!i)
-		data->flags.e ? error(line, "file is empty") : error(NULL, NULL);
 }
 
 /*

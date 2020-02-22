@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 12:31:29 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/19 16:33:33 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:24:05 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,4 @@ int		get_index_by_status(t_room *room_arr, int room_num, char status)
 		i++;
 	}
 	return (-1);
-}
-
-/*
-** Установка посещения
-*/
-
-void	set_visit(t_list *rooms, int index)
-{
-	while (rooms)
-	{
-		if (((t_room *)rooms->content)->index == index)
-			((t_room *)rooms->content)->visit = 1;
-		rooms = rooms->next;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 14:54:56 by umoff             #+#    #+#             */
-/*   Updated: 2020/02/19 16:59:10 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:29:46 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void			exec_instr(t_data *data, char *line);
 void			exec_instr_2(t_data *data, char *line);
 void			check_status(t_data *data);
 void			write_ants_qty(t_data *data, char *line);
-void			check_file(t_data *data, char *line, int i);
 void			check_uniqe_room(t_data *data, t_room room, char *line);
 
 /*
