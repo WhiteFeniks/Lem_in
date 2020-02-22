@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 19:06:24 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 17:01:05 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:03:36 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Распечатка ошибок
+** Функция распечаток ошибок
 */
 
 void	error(char *line, char *desc)
@@ -31,7 +31,7 @@ void	error(char *line, char *desc)
 }
 
 /*
-** Распечатка путей
+** Функция распечатки путей
 */
 
 void	print_pathways(t_data data)
@@ -64,7 +64,7 @@ void	print_pathways(t_data data)
 }
 
 /*
-** Распечатка справки
+** Функция печати справки
 */
 
 void	print_help(void)
@@ -79,7 +79,7 @@ void	print_help(void)
 }
 
 /*
-** Проверка на существование линии и печать ошибки
+** Функция проверки на существование линии и печать ошибки
 */
 
 void	check_line(t_data *data, char *line)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: umoff <umoff@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 16:02:40 by klaurine          #+#    #+#             */
-/*   Updated: 2020/02/19 16:31:42 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:10:32 by umoff            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,59 +58,4 @@ void		free_matrix(t_matrix m)
 	}
 	free(m.values);
 	m.values = NULL;
-}
-
-/*
-** Дублирование матрицы
-*/
-
-t_matrix	dup_matrix(t_matrix src)
-{
-	t_matrix	dest;
-	size_t		i;
-	size_t		j;
-
-	dest.rows = src.rows;
-	dest.cols = src.cols;
-	dest = create_matrix(dest.rows, dest.cols);
-	i = 0;
-	while (i < dest.rows)
-	{
-		j = 0;
-		while (j < dest.cols)
-		{
-			dest.values[i][j] = src.values[i][j];
-			j++;
-		}
-		i++;
-	}
-	return (dest);
-}
-
-/*
-** Печать матрицы
-*/
-
-void		print_matrix(t_matrix m)
-{
-	size_t i;
-	size_t j;
-
-	if (!(m.values))
-	{
-		ft_putendl("The matrix doesn`t exist");
-		return ;
-	}
-	i = 0;
-	while (i < m.rows)
-	{
-		j = 0;
-		while (j < m.cols)
-		{
-			ft_printf("%i ", m.values[i][j]);
-			j++;
-		}
-		ft_putchar('\n');
-		i++;
-	}
 }
